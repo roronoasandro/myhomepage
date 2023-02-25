@@ -1,10 +1,8 @@
 name: Deploy using Github Action
-
 on:
   push:
-    branches: [ "master" ]
-  pull_request:
-    branches: [ "master" ]
+    branches:
+      - main
 
 jobs:
   build:
@@ -27,6 +25,7 @@ jobs:
     - run: npm run build --if-present
     - run: npm test
     - name: Deploy 🚀
-      uses: JamesIves/github-pages-deploy-action@4.1.6
+      uses: JamesIves/github-pages-deploy-action@v4
       with:
-        folder: build # The folder the action should deploy.
+        folder: build
+        clean: true
